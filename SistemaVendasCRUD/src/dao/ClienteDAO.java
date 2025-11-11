@@ -17,7 +17,8 @@ public class ClienteDAO {
             stmt.setString(3, cliente.getTelefone());
             stmt.setString(4, cliente.getEndereco());
             stmt.executeUpdate();
-
+            
+            // Obter o ID gerado
             try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
                     cliente.setId(generatedKeys.getInt(1));

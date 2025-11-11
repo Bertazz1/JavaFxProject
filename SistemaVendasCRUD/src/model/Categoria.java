@@ -1,42 +1,27 @@
 package model;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-
 public class Categoria {
-    private final IntegerProperty id;
-    private final StringProperty nome;
-    private final StringProperty descricao;
-
-    public Categoria() {
-        this.id = new SimpleIntegerProperty();
-        this.nome = new SimpleStringProperty();
-        this.descricao = new SimpleStringProperty();
-    }
-
+    private int id;
+    private String nome;
+    private String descricao;
+    
+    public Categoria() {}
+    
     public Categoria(String nome, String descricao) {
-        this();
-        this.nome.set(nome);
-        this.descricao.set(descricao);
+        this.nome = nome;
+        this.descricao = descricao;
     }
-
-
-    public int getId() { return id.get(); }
-    public void setId(int id) { this.id.set(id); }
-    public IntegerProperty idProperty() { return id; }
-
-    public String getNome() { return nome.get(); }
-    public void setNome(String nome) { this.nome.set(nome); }
-    public StringProperty nomeProperty() { return nome; }
-
-    public String getDescricao() { return descricao.get(); }
-    public void setDescricao(String descricao) { this.descricao.set(descricao); }
-    public StringProperty descricaoProperty() { return descricao; }
-
+    
+    // Getters e Setters
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
+    public String getDescricao() { return descricao; }
+    public void setDescricao(String descricao) { this.descricao = descricao; }
+    
     @Override
     public String toString() {
-        return getNome();
+        return nome;
     }
 }
