@@ -7,33 +7,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProdutoDAO {
-
-
+    
     public void create(Produto produto) throws SQLException {
         String sql = "INSERT INTO produtos (nome, descricao, preco, estoque, categoria_id) VALUES (?, ?, ?, ?, ?)";
-
-
         try (Connection conn = DatabaseConnection.getConnection();
-
-             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, produto.getNome());
             stmt.setString(2, produto.getDescricao());
             stmt.setDouble(3, produto.getPreco());
             stmt.setInt(4, produto.getEstoque());
             stmt.setInt(5, produto.getCategoriaId());
             stmt.executeUpdate();
-
-
-            try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
-                if (generatedKeys.next()) {
-
-                    produto.setId(generatedKeys.getInt(1));
-                }
-            }
         }
     }
-
+    
     public List<Produto> read() throws SQLException {
         List<Produto> produtos = new ArrayList<>();
         String sql = "SELECT p.*, c.nome as categoria_nome FROM produtos p LEFT JOIN categorias c ON p.categoria_id = c.id";
@@ -48,14 +35,13 @@ public class ProdutoDAO {
                 produto.setPreco(rs.getDouble("preco"));
                 produto.setEstoque(rs.getInt("estoque"));
                 produto.setCategoriaId(rs.getInt("categoria_id"));
-                // Este campo é preenchido pela JOIN
                 produto.setCategoriaNome(rs.getString("categoria_nome"));
                 produtos.add(produto);
             }
         }
         return produtos;
     }
-
+    
     public void update(Produto produto) throws SQLException {
         String sql = "UPDATE produtos SET nome=?, descricao=?, preco=?, estoque=?, categoria_id=? WHERE id=?";
         try (Connection conn = DatabaseConnection.getConnection();
@@ -69,7 +55,7 @@ public class ProdutoDAO {
             stmt.executeUpdate();
         }
     }
-
+    
     public void delete(int id) throws SQLException {
         String sql = "DELETE FROM produtos WHERE id=?";
         try (Connection conn = DatabaseConnection.getConnection();

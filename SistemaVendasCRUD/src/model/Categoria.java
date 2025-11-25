@@ -1,27 +1,36 @@
 package model;
 
+import javafx.beans.property.*;
+
 public class Categoria {
-    private int id;
-    private String nome;
-    private String descricao;
+    private IntegerProperty id = new SimpleIntegerProperty();
+    private StringProperty nome = new SimpleStringProperty();
+    private StringProperty descricao = new SimpleStringProperty();
     
     public Categoria() {}
     
     public Categoria(String nome, String descricao) {
-        this.nome = nome;
-        this.descricao = descricao;
+        setNome(nome);
+        setDescricao(descricao);
     }
     
+    // Property methods para JavaFX
+    public IntegerProperty idProperty() { return id; }
+    public StringProperty nomeProperty() { return nome; }
+    public StringProperty descricaoProperty() { return descricao; }
+    
     // Getters e Setters
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
-    public String getNome() { return nome; }
-    public void setNome(String nome) { this.nome = nome; }
-    public String getDescricao() { return descricao; }
-    public void setDescricao(String descricao) { this.descricao = descricao; }
+    public int getId() { return id.get(); }
+    public void setId(int id) { this.id.set(id); }
+    
+    public String getNome() { return nome.get(); }
+    public void setNome(String nome) { this.nome.set(nome); }
+    
+    public String getDescricao() { return descricao.get(); }
+    public void setDescricao(String descricao) { this.descricao.set(descricao); }
     
     @Override
     public String toString() {
-        return nome;
+        return getNome();
     }
 }

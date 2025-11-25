@@ -25,7 +25,6 @@ public class ClientesController {
         clientesList = FXCollections.observableArrayList();
         tableView.setItems(clientesList);
         
-        // Configurar colunas
         colId.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
         colNome.setCellValueFactory(cellData -> cellData.getValue().nomeProperty());
         colEmail.setCellValueFactory(cellData -> cellData.getValue().emailProperty());
@@ -33,7 +32,6 @@ public class ClientesController {
         
         carregarClientes();
         
-        // Listener para seleção na tabela
         tableView.getSelectionModel().selectedItemProperty().addListener(
             (observable, oldValue, newValue) -> selecionarCliente(newValue));
     }

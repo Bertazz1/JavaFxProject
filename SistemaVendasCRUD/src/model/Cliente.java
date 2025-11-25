@@ -24,8 +24,7 @@ public class Cliente {
 		this.telefone.set(telefone);
 		this.endereco.set(endereco);
 	}
-	
-	//Getters e Setters para propriedades 
+
 	public int getId() {
 		return id.get();
 	}

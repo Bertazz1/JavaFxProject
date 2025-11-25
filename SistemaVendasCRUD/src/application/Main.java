@@ -9,19 +9,11 @@ import javafx.stage.Stage;
 public class Main extends Application {
     
     @Override
-    public void start(Stage primaryStage) {
-        try {
-            // Carrega a tela principal
-            Parent root = FXMLLoader.load(getClass().getResource("/view/MainView.fxml"));
-            Scene scene = new Scene(root, 400, 400);
-            
-            primaryStage.setTitle("Sistema de Vendas - CRUD MVC");
-            primaryStage.setScene(scene);
-            primaryStage.show();
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void start(Stage primaryStage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("/view/MainView.fxml"));
+        primaryStage.setTitle("Sistema de Vendas - CRUD MVC");
+        primaryStage.setScene(new Scene(root, 400, 400));
+        primaryStage.show();
     }
     
     public static void main(String[] args) {
