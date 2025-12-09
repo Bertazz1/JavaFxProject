@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" spacing="15.0" style="-fx-background-color: #f4f4f4;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.VendasController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+    <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Registro de Vendas" />
+
+    <GridPane alignment="CENTER" hgap="15.0" vgap="10.0">
+        <Label text="Data da Venda:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <DatePicker fx:id="dateDataVenda" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+        <Label text="Cliente:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <ComboBox fx:id="comboCliente" prefWidth="200.0" promptText="Selecione um cliente..." GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+        <Label text="Produto:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <ComboBox fx:id="comboProduto" prefWidth="200.0" promptText="Selecione um produto..." GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+        <Label text="Quantidade:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+        <TextField fx:id="txtQuantidade" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+        <Label text="Valor Unitário:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+        <TextField fx:id="txtValorUnitario" editable="false" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+        <Label text="Total da Venda:" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+        <Label fx:id="lblValorTotal" style="-fx-font-weight: bold; -fx-text-fill: green; -fx-font-size: 14px;" text="R$ 0,00" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+
+        <Label fx:id="lblEstoqueDisponivel" style="-fx-text-fill: gray;" text="Estoque: --" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+    </GridPane>
+
+    <HBox alignment="CENTER" spacing="10.0">
+        <Button onAction="#handleRegistrarVenda" style="-fx-font-weight: bold;" text="🛒 Registrar Venda" />
+        <Button onAction="#handleAtualizar" text="Atualizar" />
+        <Button onAction="#handleExcluir" style="-fx-text-fill: red;" text="Excluir" />
+        <Button onAction="#handleLimpar" text="Limpar" />
+    </HBox>
+
+    <TableView fx:id="tableView" prefHeight="300.0" prefWidth="800.0">
+        <columns>
+            <TableColumn fx:id="colId" prefWidth="50.0" text="ID" />
+            <TableColumn fx:id="colData" prefWidth="100.0" text="Data" />
+            <TableColumn fx:id="colCliente" prefWidth="150.0" text="Cliente" />
+            <TableColumn fx:id="colProduto" prefWidth="150.0" text="Produto" />
+            <TableColumn fx:id="colQuantidade" prefWidth="80.0" text="Qtd" />
+            <TableColumn fx:id="colValorTotal" prefWidth="100.0" text="Total" />
+        </columns>
+    </TableView>
+</VBox>

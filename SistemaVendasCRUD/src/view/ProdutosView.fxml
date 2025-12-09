@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" spacing="10.0" style="-fx-background-color: #f4f4f4;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProdutosController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+    <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Gerenciamento de Produtos" />
+
+    <GridPane alignment="CENTER" hgap="10.0" vgap="10.0">
+        <Label text="Nome:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <TextField fx:id="txtNome" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+        <Label text="Descrição:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <TextArea fx:id="txtDescricao" prefHeight="70.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+        <Label text="Preço:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <TextField fx:id="txtPreco" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+        <Label text="Estoque:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+        <TextField fx:id="txtEstoque" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+        <Label text="Categoria:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+        <ComboBox fx:id="comboCategoria" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+    </GridPane>
+
+    <HBox alignment="CENTER" spacing="10.0">
+        <Button onAction="#handleSalvar" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" text="➕ Salvar" />
+        <Button onAction="#handleAtualizar" style="-fx-background-color: #FF9800; -fx-text-fill: white;" text="✏ Atualizar" />
+        <Button onAction="#handleExcluir" style="-fx-background-color: #F44336; -fx-text-fill: white;" text="🗑 Excluir" />
+        <Button onAction="#handleLimpar" style="-fx-background-color: #9E9E9E; -fx-text-fill: white;" text="🧹 Limpar" />
+    </HBox>
+
+    <TableView fx:id="tableView" prefHeight="300.0" prefWidth="700.0">
+        <columns>
+            <TableColumn fx:id="colId" prefWidth="50.0" text="ID" />
+            <TableColumn fx:id="colNome" prefWidth="150.0" text="Nome" />
+            <TableColumn fx:id="colDescricao" prefWidth="200.0" text="Descrição" />
+            <TableColumn fx:id="colPreco" prefWidth="80.0" text="Preço" />
+            <TableColumn fx:id="colEstoque" prefWidth="70.0" text="Estoque" />
+            <TableColumn fx:id="colCategoria" prefWidth="120.0" text="Categoria" />
+        </columns>
+    </TableView>
+</VBox>
